@@ -1,9 +1,8 @@
 package ncs.demo.controllers;
 
-import ncs.demo.entities.Product;
-import ncs.demo.entities.Sessions;
-import ncs.demo.entities.User;
+import ncs.demo.entities.*;
 import ncs.demo.services.CommonService;
+import ncs.demo.utilities.RequestWithSession;
 import ncs.demo.utilities.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -48,8 +47,65 @@ public class ProductController {
             response.setStatus("failure");
             return new ResponseEntity<>(response , HttpStatus.OK);
         }
+    }
+
+    @RequestMapping( method = RequestMethod.POST , value = "/product/kartlist")
+    public ResponseEntity<Response> kartlist(@RequestBody Sessions sessions){
 
 
+
+        Response response = new Response();
+
+        if(commonService.validateUser(sessions)){
+            response.setStatus("success");
+
+            List<Purchase> products = commonService.getKartList(sessions.getUsername() );
+
+            response.setData(products);
+
+            return new ResponseEntity<>(response , HttpStatus.OK);
+        } else {
+            response.setStatus("failure");
+            return new ResponseEntity<>(response , HttpStatus.OK);
+        }
+    }
+
+
+    @RequestMapping( method = RequestMethod.POST , value = "/product/cardslist")
+    public ResponseEntity<Response> cardslist(@RequestBody Sessions sessions){
+
+        Response response = new Response();
+
+        if(commonService.validateUser(sessions)){
+            response.setStatus("success");
+
+            List<Cards> products = commonService.getCardsList(sessions.getUsername() );
+
+            response.setData(products);
+
+            return new ResponseEntity<>(response , HttpStatus.OK);
+        } else {
+            response.setStatus("failure");
+            return new ResponseEntity<>(response , HttpStatus.OK);
+        }
+    }
+
+
+
+    @RequestMapping( method = RequestMethod.POST , value = "/product/addtokart")
+    public ResponseEntity<Response> addtokart(@RequestBody RequestWithSession<List<Purchase>> requestWithSession){
+        Response response = new Response();
+
+        if(commonService.validateUser( new Sessions( null, requestWithSession.getUsername() , requestWithSession.getSessionkey(), null ))){
+            response.setStatus("success");
+
+            commonService.addtokart(requestWithSession.getData());
+
+            return new ResponseEntity<>(response , HttpStatus.OK);
+        } else {
+            response.setStatus("failure");
+            return new ResponseEntity<>(response , HttpStatus.OK);
+        }
     }
 }
 ///

@@ -1,11 +1,7 @@
 package ncs.demo.services;
 
-import ncs.demo.entities.Product;
-import ncs.demo.entities.Sessions;
-import ncs.demo.entities.User;
-import ncs.demo.repos.KeysRepo;
-import ncs.demo.repos.ProductRepo;
-import ncs.demo.repos.UserRepo;
+import ncs.demo.entities.*;
+import ncs.demo.repos.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,16 +19,26 @@ public class CommonService {
     @Autowired
     ProductRepo productRepo;
 
+    @Autowired
+    PurchaseRepo purchaseRepo;
+
+    @Autowired
+    CardsRepo cardsRepo;
+
     public boolean saveUser(User user) {
 
-        List<User> users =  userRepo.findAllByUsername(user.getUsername());
-
-        if( users.isEmpty() ){
-            userRepo.save(user);
-            return true;
-        }  else {
+        try {
+            List<User> users =  userRepo.findAllByUsername(user.getUsername());
+            if( users.isEmpty() ){
+                userRepo.save(user);
+                return true;
+            }  else {
+                return false;
+            }
+        } catch(Exception ex){
             return false;
         }
+
     }
 
     public boolean loginUser(User user) {
@@ -79,5 +85,19 @@ public class CommonService {
 
     public List<Product> getProductList() {
         return productRepo.findAll();
+    }
+
+    public void addtokart(List<Purchase> data) {
+        purchaseRepo.saveAll(data);
+    }
+
+    public List<Purchase> getKartList(String username) {
+
+        return purchaseRepo.findAllByUsernameAndOrderid(username , 0L) ;
+    }
+
+    public List<Cards> getCardsList(String username) {
+
+        return  cardsRepo.findAllByUsername(username);
     }
 }

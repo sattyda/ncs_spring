@@ -1,6 +1,8 @@
 package ncs.demo;
 
+import ncs.demo.entities.Cards;
 import ncs.demo.entities.Product;
+import ncs.demo.repos.CardsRepo;
 import ncs.demo.repos.ProductRepo;
 import ncs.demo.services.CommonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,9 @@ public class DemoApplication {
 	@Autowired
 	ProductRepo productRepo;
 
+	@Autowired
+	CardsRepo cardsRepo;
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
@@ -22,6 +27,7 @@ public class DemoApplication {
 	@Bean
 	public void setup(){
 
+//		cardsRepo.save(new Cards( null, "sattyda" , "Stupid Guy", "1234567887654321" , "DebitCard" , "07/2012" , "123" ));
 //		productRepo.save(new Product( null, "Tennis Racket" , 20L, "You play tennis with this" , "https://tennishead.net/wp-content/uploads/2019/05/Rackets-from-testing-day.jpg", "Sports" , 2000.50  ));
 //		productRepo.save(new Product( null, "Tennis Racket" , 20L, "You play tennis with this" , "https://tennishead.net/wp-content/uploads/2019/05/Rackets-from-testing-day.jpg", "Sports" , 2000.50  ));
 //		productRepo.save(new Product( null, "Tennis Racket" , 20L, "You play tennis with this" , "https://tennishead.net/wp-content/uploads/2019/05/Rackets-from-testing-day.jpg", "Sports" , 2000.50  ));
