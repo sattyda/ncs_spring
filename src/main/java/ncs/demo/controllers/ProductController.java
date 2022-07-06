@@ -107,6 +107,39 @@ public class ProductController {
             return new ResponseEntity<>(response , HttpStatus.OK);
         }
     }
+
+
+    @RequestMapping( method = RequestMethod.POST , value = "/product/savecard")
+    public ResponseEntity<Response> savecard(@RequestBody RequestWithSession<Cards> requestWithSession){
+        Response response = new Response();
+
+        if(commonService.validateUser( new Sessions( null, requestWithSession.getUsername() , requestWithSession.getSessionkey(), null ))){
+            response.setStatus("success");
+
+            commonService.savecard(requestWithSession.getData());
+
+            return new ResponseEntity<>(response , HttpStatus.OK);
+        } else {
+            response.setStatus("failure");
+            return new ResponseEntity<>(response , HttpStatus.OK);
+        }
+    }
+
+    @RequestMapping( method = RequestMethod.POST , value = "/product/saveorder")
+    public ResponseEntity<Response> saveorder(@RequestBody RequestWithSession<Orders> requestWithSession){
+        Response response = new Response();
+
+        if(commonService.validateUser( new Sessions( null, requestWithSession.getUsername() , requestWithSession.getSessionkey(), null ))){
+            response.setStatus("success");
+
+            commonService.saveorder(requestWithSession.getData());
+
+            return new ResponseEntity<>(response , HttpStatus.OK);
+        } else {
+            response.setStatus("failure");
+            return new ResponseEntity<>(response , HttpStatus.OK);
+        }
+    }
 }
 ///
 ///

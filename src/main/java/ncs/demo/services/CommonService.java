@@ -5,6 +5,7 @@ import ncs.demo.repos.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -24,6 +25,9 @@ public class CommonService {
 
     @Autowired
     CardsRepo cardsRepo;
+
+    @Autowired
+    OrdersRepo ordersRepo;
 
     public boolean saveUser(User user) {
 
@@ -99,5 +103,25 @@ public class CommonService {
     public List<Cards> getCardsList(String username) {
 
         return  cardsRepo.findAllByUsername(username);
+    }
+
+    public void savecard(Cards data) {
+        cardsRepo.save(data);
+    }
+
+    public void saveorder(Orders data) {
+        ordersRepo.save(data);
+
+        List<Purchase> purchases = purchaseRepo.findAllByUsernameAndOrderid(data.getUsername(), 0L) ;
+
+        ArrayList<Purchase> arrayList = new ArrayList();
+        for(int i = 0; i < purchases.size(); i++) {
+            Purchase purchase = purchases.get(i);
+            purchase.setOrderid(data.getId());
+//            purchaseRepo.save(purchase);
+            arrayList.add(purchase);
+        }
+
+        purchaseRepo.saveAll(arrayList);
     }
 }
