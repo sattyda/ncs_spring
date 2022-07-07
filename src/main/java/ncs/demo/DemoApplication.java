@@ -46,11 +46,11 @@ public class DemoApplication {
 //		productRepo.save(new Product(null, "Xiaomi Mi Smart Band 6 Global Version Black", 100L ,"Full screen 1.56' AMOLED display has been improved all around*. Easily check text messages, calls and notifications with a quick glance.", "https://www.honorbuy.com/9880-square_medium_default/mi-band-6-global-version.jpg", "Phone", 189.0));
 //		productRepo.save(new Product(null, "Edifier W820NB Bluetooth Headphone", 10L ,"Hi-Res Audio | Gaming Mode | USB Audio", "https://usa-oss.edifier.com/Uploads/images/2022/05/17/2022051710512116527558815966.jpg", "Headphone", 249.0));
 //		productRepo.save(new Product( null, "Venom" , 30L, "Venom Figuring For Showcase Only " , "  https://www.nicepng.com/png/full/21-219720_spiderman-venom-png-png-freeuse-download-marvel-now.png", "Marvel" , 1500.0  ));
-
+//
 //		productRepo.save(new Product( null, "Azure Striker Gunvolt Striker Pack" , 30L, "A bundle holding Azure Striker Gunvolt and Azure Striker Gunvolt 2" , "https://assets-prd.ignimgs.com/2022/02/16/azurestrikergunvolt-sq-1645035298111.jpg", "Video Game" , 3000.00  ));
 //		productRepo.save(new Product( null, "Gunvolt Chronicles: Luminous Avenger iX" , 20L, "A spin-off of Azure Striker Gunvolt" , "https://www.mobygames.com/images/covers/l/594428-gunvolt-chronicles-luminous-avenger-ix-nintendo-switch-front-cover.jpg", "Video Game" , 1500.00  ));
 //		productRepo.save(new Product( null, "Gunvolt Chronicles: Luminous Avenger iX 2" , 20L, "A sequel to Luminous Avenger iX" , "https://www.mobygames.com/images/covers/l/594428-gunvolt-chronicles-luminous-avenger-ix-nintendo-switch-front-cover.jpg", "Video Game" , 1500.00  ));
-
+//
 //		productRepo.save(new Product( null, "KD 15 EP" , 20L, "Basketball Shoes" , "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/435d1f35-6bbe-42e4-bf00-d5c2de3d2b7e/kd15-ep-basketball-shoes-9K6BpD.png", "Sports" , 639.00  ));
 //		productRepo.save(new Product( null, "Nike Flex Experience Run 11 Next Nature" , 20L, "Men's Road Running Shoes" , "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/4355b135-68c3-43ec-b96d-eb7d17823127/flex-experience-run-11-next-nature-road-running-shoes-rB6h46.png", "Sports" , 239.00  ));
 //		productRepo.save(new Product( null, "Air Jordan 6 Retro" , 20L, "Basketball Shoes" , "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/b4bbffd7-1fe1-4a92-970e-49e1a3a54ac4/air-jordan-6-retro-shoes-4m3b9d.png", "Sports" , 775.00 ));
